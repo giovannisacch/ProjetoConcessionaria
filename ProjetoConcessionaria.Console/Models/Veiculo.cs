@@ -7,7 +7,7 @@ namespace ProjetoConcessionaria.Models
         private DateTime Ano { get; set; }
         private int Kilometragem { get; set; }
         private string Cor { get; set; }
-        private double Valor { get; set; }
+        protected double Valor { get; set; }
 
         public Veiculo(string marca, string modelo, string ano, int kilometragem, string cor, double valor)
         {
@@ -66,6 +66,11 @@ namespace ProjetoConcessionaria.Models
             Valor = valor;
         }
         public double GetValor()
+        {
+            return Valor;
+        }
+
+        public virtual double CalcValor()
         {
             return Valor;
         }

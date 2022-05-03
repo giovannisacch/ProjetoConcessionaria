@@ -5,7 +5,7 @@ namespace ProjetoConcessionaria.Models
         private string Cargo { get; set; }
 
         public Funcionario(string nome, string cpf, string dataNascimento, string cargo) :
-                       base(nome, cpf, dataNascimento)
+                           base(nome, cpf, dataNascimento)
         {
             SetCargo(cargo);
         }

@@ -28,5 +28,14 @@ namespace ProjetoConcessionaria.Models
         {
             return Partida;
         }
+        public virtual double CalcValor()
+        {
+            var valor = Valor + (Cilindrada * 50);
+            if (Partida == "Eletronica")
+            {
+                return Valor = valor * 1.1;
+            }
+            return Valor = valor;
+        }
     }
 }

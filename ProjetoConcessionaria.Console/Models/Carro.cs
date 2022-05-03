@@ -28,6 +28,14 @@ namespace ProjetoConcessionaria.Models
         {
             return Combustivel;
         }
+        public override double CalcValor()
+        {
+            if (TransmissaoAutomatica)
+            {
+                return Valor = Valor * 1.2;
+            }
+            return Valor;
+        }
 
     }
 }

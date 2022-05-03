@@ -57,5 +57,12 @@ namespace ProjetoConcessionaria.Models
         {
             return ValorFinal;
         }
+        public void AplicarDesconto()
+        {
+            if (Vendedor.GetCargo() == "Gerente")
+            {
+                ValorFinal = ValorFinal * 0.95;
+            }
+        }
     }
 }
