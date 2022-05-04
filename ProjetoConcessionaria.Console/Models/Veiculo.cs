@@ -5,16 +5,16 @@ namespace ProjetoConcessionaria.Models
         private string Marca { get; set; }
         private string Modelo { get; set; }
         private DateTime Ano { get; set; }
-        private int Kilometragem { get; set; }
+        private int Quilometragem { get; set; }
         private string Cor { get; set; }
         protected double Valor { get; set; }
 
-        public Veiculo(string marca, string modelo, string ano, int kilometragem, string cor, double valor)
+        public Veiculo(string marca, string modelo, string ano, int quilometragem, string cor, double valor)
         {
             SetMarca(marca);
             SetModelo(modelo);
             SetAno(ano);
-            SetKilometragem(kilometragem);
+            SetQuilometragem(quilometragem);
             SetCor(cor);
             SetValor(valor);
         }
@@ -45,13 +45,13 @@ namespace ProjetoConcessionaria.Models
         {
             return Ano;
         }
-        public void SetKilometragem(int kilometragem)
+        public void SetQuilometragem(int quilometragem)
         {
-            Kilometragem = kilometragem;
+            Quilometragem = quilometragem;
         }
-        public int GetKilometragem()
+        public int GetQuilometragem()
         {
-            return Kilometragem;
+            return Quilometragem;
         }
         public void SetCor(string cor)
         {
