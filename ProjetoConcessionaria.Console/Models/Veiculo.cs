@@ -2,12 +2,17 @@ namespace ProjetoConcessionaria.Models
 {
     public class Veiculo
     {
-        private string Marca { get; set; }
-        private string Modelo { get; set; }
-        private DateTime Ano { get; set; }
-        private int Quilometragem { get; set; }
-        private string Cor { get; set; }
-        protected double Valor { get; set; }
+        public string Marca { get; set; }
+        public string Modelo { get; set; }
+        public DateTime Ano { get; set; }
+        public int Quilometragem { get; set; }
+        public string Cor { get; set; }
+        public double Valor { get; set; }
+
+        public Veiculo()
+        {
+
+        }
 
         public Veiculo(string marca, string modelo, string ano, int quilometragem, string cor, double valor)
         {

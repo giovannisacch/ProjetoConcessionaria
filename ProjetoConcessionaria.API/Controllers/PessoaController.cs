@@ -22,4 +22,16 @@ public class PessoaController : ControllerBase
     {
         return Ok(PessoasDaClasse);
     }
+
+    [HttpDelete("DeletePessoa")]
+    public IActionResult DeletePessoa()
+    {
+        var index = PessoasDaClasse.Count();
+        if (index != 0)
+        {
+            PessoasDaClasse.RemoveAt(index - 1);
+            return Ok(PessoasDaClasse);
+        }
+        return BadRequest("Essa lista está vazia");
+    }
 }
