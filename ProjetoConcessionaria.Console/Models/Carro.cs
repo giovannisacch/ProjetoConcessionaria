@@ -1,14 +1,12 @@
+using ProjetoConcessionaria.Console.Exception;
+
 namespace ProjetoConcessionaria.Models
 {
     public class Carro : Veiculo
     {
-        public bool TransmissaoAutomatica { get; set; }
-        public string Combustivel { get; set; }
+        private bool TransmissaoAutomatica { get; set; }
+        private string Combustivel { get; set; }
 
-        public Carro()
-        {
-
-        }
         public Carro(string marca, string modelo, string ano, int quilometragem, string cor, double valor,
                      bool transmissaoAutomatica, string combustivel) : base(marca, modelo, ano, quilometragem, cor, valor)
         {
@@ -39,6 +37,13 @@ namespace ProjetoConcessionaria.Models
                 return Valor = Valor * 1.2;
             }
             return Valor;
+        }
+
+        public override bool ValidarValor(double valor)
+        {
+            if(valor > 5000)
+                return true;
+            throw new ErroDeValidacaoException("Valor de carro tem que ser maior que 5000!");
         }
 
     }

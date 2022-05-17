@@ -2,15 +2,11 @@ namespace ProjetoConcessionaria.Models
 {
     public class Venda
     {
-        public Cliente Cliente { get; set; }
-        public Funcionario Vendedor { get; set; }
-        public Veiculo Veiculo { get; set; }
-        public string FormaPagamento { get; set; }
-        public double ValorFinal { get; set; }
-
-        public Venda(){
-            
-        }
+        private Cliente Cliente { get; set; }
+        private Funcionario Vendedor { get; set; }
+        private Veiculo Veiculo { get; set; }
+        private string FormaPagamento { get; set; }
+        private double ValorFinal { get; set; }
 
         public Venda(Cliente cliente, Funcionario vendedor, Veiculo veiculo, string formaPagamento, double valorFinal)
         {

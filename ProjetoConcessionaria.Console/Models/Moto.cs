@@ -1,14 +1,12 @@
+using ProjetoConcessionaria.Console.Exception;
+
 namespace ProjetoConcessionaria.Models
 {
     public class Moto : Veiculo
     {
-        public int Cilindrada { get; set; }
-        public string Partida { get; set; }
+        private int Cilindrada { get; set; }
+        private string Partida { get; set; }
 
-        public Moto()
-        {
-
-        }
         public Moto(string marca, string modelo, string ano, int quilometragem, string cor, double valor,
                      int cilindrada, string partida) : base(marca, modelo, ano, quilometragem, cor, valor)
         {
@@ -40,6 +38,13 @@ namespace ProjetoConcessionaria.Models
                 return Valor = valor * 1.1;
             }
             return Valor = valor;
+        }
+
+        public override bool ValidarValor(double valor)
+        {
+            if(valor > 2000)
+                return true;
+            throw new ErroDeValidacaoException("Valor de moto tem que ser maior que 2000!");
         }
     }
 }

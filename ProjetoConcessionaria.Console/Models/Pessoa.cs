@@ -2,15 +2,9 @@ namespace ProjetoConcessionaria.Models
 {
     public class Pessoa
     {
-        public string Nome { get; set; }
-        public string Cpf { get; set; }
-        public DateTime DataNascimento { get; set; }
-
-        public Pessoa()
-        {
-
-        }
-        
+        private string Nome { get; set; }
+        private string Cpf { get; set; }
+        private DateTime DataNascimento { get; set; }
         public Pessoa(string nome, string cpf, string dataNascimento)
         {
             SetNome(nome);
