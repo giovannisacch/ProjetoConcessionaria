@@ -7,9 +7,9 @@ public class VendaTest
     public void TestarGetESetDeCliente()
     {
         //Arrange
-        var carroParametro = new Carro("1", "1", "01/01/2022", 0, "1", 1, true, "1");
-        var vendedorParametro = new Funcionario("1", "1", "01/01/0001", "1");
-        var valorEsperado = new Cliente("1", "1", "01/01/0001", "1", "1");
+        var carroParametro = CriarCarroPadrao();
+        var vendedorParametro = CriarVendedorPadrao();
+        var valorEsperado = CriarClientePadrao();
         var venda = new Venda(valorEsperado, vendedorParametro, carroParametro, "1", 1);
 
         //Act
@@ -22,9 +22,9 @@ public class VendaTest
     public void TestarGetESetDeVendedor()
     {
         //Arrange
-        var carroParametro = new Carro("1", "1", "01/01/2022", 0, "1", 1, true, "1");
-        var valorEsperado = new Funcionario("1", "1", "01/01/0001", "1");
-        var clienteParametro = new Cliente("1", "1", "01/01/0001", "1", "1");
+        var carroParametro = CriarCarroPadrao();
+        var valorEsperado = CriarVendedorPadrao();
+        var clienteParametro = CriarClientePadrao();
         var venda = new Venda(clienteParametro, valorEsperado, carroParametro, "1", 1);
 
         //Act
@@ -38,9 +38,9 @@ public class VendaTest
     public void TestarGetESetDeVeiculo()
     {
         //Arrange
-        var valorEsperado = new Carro("1", "1", "01/01/2022", 0, "1", 1, true, "1");
-        var vendedorParametro = new Funcionario("1", "1", "01/01/0001", "1");
-        var clienteParametro = new Cliente("1", "1", "01/01/0001", "1", "1");
+        var valorEsperado = CriarCarroPadrao();
+        var vendedorParametro = CriarVendedorPadrao();
+        var clienteParametro = CriarClientePadrao();
         var venda = new Venda(clienteParametro, vendedorParametro, valorEsperado, "1", 1);
 
         //Act
@@ -54,9 +54,9 @@ public class VendaTest
     public void TestarGetESetDeFormaPagamento()
     {
         //Arrange
-        var carroParametro = new Carro("1", "1", "01/01/2022", 0, "1", 1, true, "1");
-        var vendedorParametro = new Funcionario("1", "1", "01/01/0001", "1");
-        var clienteParametro = new Cliente("1", "1", "01/01/0001", "1", "1");
+        var carroParametro = CriarCarroPadrao();
+        var vendedorParametro = CriarVendedorPadrao();
+        var clienteParametro = CriarClientePadrao();
         var valorEsperado = "Debito";
         var venda = new Venda(clienteParametro, vendedorParametro, carroParametro, valorEsperado, 1);
 
@@ -71,10 +71,10 @@ public class VendaTest
     public void TestarGetESetDeValorFInal()
     {
         //Arrange
-        var carroParametro = new Carro("1", "1", "01/01/2022", 0, "1", 1, true, "1");
-        var vendedorParametro = new Funcionario("1", "1", "01/01/0001", "1");
-        var clienteParametro = new Cliente("1", "1", "01/01/0001", "1", "1");
-        var valorEsperado = 200000;
+        var carroParametro = CriarCarroPadrao();
+        var vendedorParametro = CriarVendedorPadrao();
+        var clienteParametro = CriarClientePadrao();
+        var valorEsperado = 6000;
         var venda = new Venda(clienteParametro, vendedorParametro, carroParametro, "1", valorEsperado);
 
         //Act
@@ -88,9 +88,10 @@ public class VendaTest
     public void TestarSeAplicarDescontoFuncionaCorretamente()
     {
         //Arrange
-        var carroParametro = new Carro("1", "1", "01/01/2022", 0, "1", 1, true, "1");
-        var vendedorParametro = new Funcionario("1", "1", "01/01/0001", "Gerente");
-        var clienteParametro = new Cliente("1", "1", "01/01/0001", "1", "1");
+        var carroParametro = CriarCarroPadrao();
+        var vendedorParametro = CriarVendedorPadrao();
+        var clienteParametro = CriarClientePadrao();
+        vendedorParametro.SetCargo("Gerente");
         var valorEsperado = 95;
         var venda = new Venda(clienteParametro, vendedorParametro, carroParametro, "1", 100);
 
@@ -100,6 +101,19 @@ public class VendaTest
 
         //Assert
         Assert.Equal(valorEsperado, valorAtual);
+    }
+
+    public Carro CriarCarroPadrao()
+    {
+        return new Carro("Teste", "Teste", "01/01/2022", 0, "Vermelho", 5000, true, "Gasolina");
+    }
+    public Cliente CriarClientePadrao()
+    {
+        return new Cliente("Luiz", "444-555-444-45", "01/01/2022", "teste@gmail.com", "11944445555");
+    }
+    public Funcionario CriarVendedorPadrao()
+    {
+        return new Funcionario("Luiz", "444-555-444-45", "01/01/2022", "Vendedor");
     }
 
 }

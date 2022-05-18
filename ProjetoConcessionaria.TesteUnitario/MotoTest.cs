@@ -9,9 +9,10 @@ public class MotoTest
     {
         //Arrange
         var valorEsperado = 250;
-        var veiculo = new Moto("1", "1", "01/01/2022", 0, "1", 1, valorEsperado, "1");
+        var veiculo = CriarMotoPadrao();
 
         //Act
+        veiculo.SetCilindrada(valorEsperado);
         var valorAtual = veiculo.GetCilindrada();
 
         //Assert
@@ -23,9 +24,10 @@ public class MotoTest
     {
         //Arrange
         var valorEsperado = "Carburador";
-        var veiculo = new Moto("1", "1", "01/01/2022", 0, "1", 1, 1, valorEsperado);
+        var veiculo = CriarMotoPadrao();
 
         //Act
+        veiculo.SetPartida(valorEsperado);
         var valorAtual = veiculo.GetPartida();
 
         //Assert
@@ -36,14 +38,19 @@ public class MotoTest
     public void TestarSeCalcValorFuncionaCorretamente()
     {
         //Arrange
-        var valorEsperado = 5610;
-        var veiculo = new Moto("1", "1", "01/01/2022", 0, "1", 100, 100, "Eletronica");
+        var valorEsperado = 35200;
+        var veiculo = CriarMotoPadrao();
 
         //Act
         var valorAtual = veiculo.CalcValor();
 
         //Assert
         Assert.Equal(valorEsperado, valorAtual);
+    }
+
+    public Moto CriarMotoPadrao()
+    {
+        return new Moto("Teste", "Teste", "01/01/2022", 0, "Vermelho", 2000, 600, "Eletronica");
     }
 
 }

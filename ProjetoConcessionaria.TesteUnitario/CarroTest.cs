@@ -8,10 +8,11 @@ public class CarroTest
     public void TestarGetESetDeTransmissaoAutomatica()
     {
         //Arrange
-        var valorEsperado = true;
-        var veiculo = new Carro("1", "1", "01/01/2022", 0, "1", 1, valorEsperado, "1");
+        var valorEsperado = false;
+        var veiculo = CriarCarroPadrao();
 
         //Act
+        veiculo.SetTransmissaoAutomatica(valorEsperado);
         var valorAtual = veiculo.GetTransmissaoAutomatica();
 
         //Assert
@@ -22,10 +23,11 @@ public class CarroTest
     public void TestarGetESetDeCombustivel()
     {
         //Arrange
-        var valorEsperado = "Gasolina";
-        var veiculo = new Carro("1", "1", "01/01/2022", 0, "1", 1, true, valorEsperado);
+        var valorEsperado = "Alcool";
+        var veiculo = CriarCarroPadrao();
 
         //Act
+        veiculo.SetCombustivel(valorEsperado);
         var valorAtual = veiculo.GetCombustivel();
 
         //Assert
@@ -36,14 +38,19 @@ public class CarroTest
     public void TestarSeCalcValorFuncionaCorretamente()
     {
         //Arrange
-        var valorEsperado = 120;
-        var veiculo = new Carro("1", "1", "01/01/2022", 0, "1", 100, true, "Gasolina");
+        var valorEsperado = 6000;
+        var veiculo = CriarCarroPadrao();
 
         //Act
         var valorAtual = veiculo.CalcValor();
 
         //Assert
         Assert.Equal(valorEsperado, valorAtual);
+    }
+
+    public Carro CriarCarroPadrao()
+    {
+        return new Carro("Teste", "Teste", "01/01/2022", 0, "Vermelho", 5000, true, "Gasolina");
     }
 
 }

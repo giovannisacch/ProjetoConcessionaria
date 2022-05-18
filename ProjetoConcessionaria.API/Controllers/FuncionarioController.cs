@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProjetoConcessionaria.Models;
+using ProjetoConcessionaria.Console.Exception;
+using ProjetoConcessionaria.API.DTOs;
 
 namespace ProjetoConcessionaria.API.Controllers;
 
@@ -8,13 +10,20 @@ namespace ProjetoConcessionaria.API.Controllers;
 
 public class FuncionarioController : ControllerBase
 {
-    public static List<Funcionario> FuncionariosDaClasse { get; set; } = new List<Funcionario>();
+    public static List<FuncionarioDto> FuncionariosDaClasse { get; set; } = new List<FuncionarioDto>();
 
     [HttpPost("SetFuncionario")]
-    public IActionResult SetFuncionario(Funcionario funcionario)
+    public IActionResult SetFuncionario(FuncionarioDto funcionarioDto)
     {
-        FuncionariosDaClasse.Add(funcionario);
+        try{
+        var funcionario = new Funcionario(funcionarioDto.Nome, funcionarioDto.Cpf, funcionarioDto.DataNascimento.ToString("yyyy"), funcionarioDto.Cargo);
+        FuncionariosDaClasse.Add(funcionarioDto);
         return Ok(FuncionariosDaClasse);
+        }
+        catch(ErroDeValidacaoException ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 
     [HttpGet("GetFuncionario")]

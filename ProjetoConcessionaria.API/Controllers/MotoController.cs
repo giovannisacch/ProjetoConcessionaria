@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using ProjetoConcessionaria.Models;
+using ProjetoConcessionaria.Console.Exception;
+using ProjetoConcessionaria.API.DTOs;
+
 
 namespace ProjetoConcessionaria.API.Controllers;
 
@@ -8,13 +11,21 @@ namespace ProjetoConcessionaria.API.Controllers;
 
 public class MotoController : ControllerBase
 {
-    public static List<Moto> MotosDaClasse { get; set; } = new List<Moto>();
+    public static List<MotoDto> MotosDaClasse { get; set; } = new List<MotoDto>();
 
     [HttpPost("SetMoto")]
-    public IActionResult SetMoto(Moto moto)
+    public IActionResult SetMoto(MotoDto motoDto)
     {
-        MotosDaClasse.Add(moto);
-        return Ok(MotosDaClasse);
+        try
+        {
+            var moto = new Moto(motoDto.Marca, motoDto.Modelo, motoDto.Ano.ToString("yyyy"), motoDto.Quilometragem, motoDto.Cor, motoDto.Valor, motoDto.Cilindrada, motoDto.Partida);
+            MotosDaClasse.Add(motoDto);
+            return Ok(MotosDaClasse);
+        }
+        catch (ErroDeValidacaoException ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 
     [HttpGet("GetMoto")]

@@ -8,9 +8,10 @@ public class VeiculoTest
     {
         //Arrange
         var marcaEsperada = "Ferrari";
-        var veiculo = new Veiculo(marcaEsperada, "1", "1/1/2022", 1, "1", 1);
+        var veiculo = CriarVeiculoPadrao();
 
         //Act
+        veiculo.SetMarca(marcaEsperada);
         var marcaAtual = veiculo.GetMarca();
 
         //Assert
@@ -21,9 +22,10 @@ public class VeiculoTest
     {
         //Arrange
         var modeloEsperado = "F8";
-        var veiculo = new Veiculo("1", modeloEsperado, "1/1/2022", 1, "1", 1);
+        var veiculo = CriarVeiculoPadrao();
 
         //Act
+        veiculo.SetModelo(modeloEsperado);
         var modeloAtual = veiculo.GetModelo();
 
         //Assert
@@ -35,9 +37,10 @@ public class VeiculoTest
     {
         //Arrange
         var anoEsperado = "01/01/2022";
-        var veiculo = new Veiculo("1", "1", anoEsperado, 1, "1", 1);
+        var veiculo = CriarVeiculoPadrao();
 
         //Act
+        veiculo.SetAno(anoEsperado);
         var anoAtual = veiculo.GetAno();
 
         //Assert
@@ -49,9 +52,10 @@ public class VeiculoTest
     {
         //Arrange
         var quilometragemEsperada = 0;
-        var veiculo = new Veiculo("1", "1", "01/01/2022", quilometragemEsperada, "1", 1);
+        var veiculo = CriarVeiculoPadrao();
 
         //Act
+        veiculo.SetQuilometragem(quilometragemEsperada);
         var quilometragemAtual = veiculo.GetQuilometragem();
 
         //Assert
@@ -63,9 +67,10 @@ public class VeiculoTest
     {
         //Arrange
         var corEsperada = "Vermelho";
-        var veiculo = new Veiculo("1", "1", "01/01/2022", 0, corEsperada, 1);
+        var veiculo = CriarVeiculoPadrao();
 
         //Act
+        veiculo.SetCor(corEsperada);
         var corAtual = veiculo.GetCor();
 
         //Assert
@@ -77,27 +82,19 @@ public class VeiculoTest
     {
         //Arrange
         var valorEsperado = 200000;
-        var veiculo = new Veiculo("1", "1", "01/01/2022", 0, "1", valorEsperado);
+        var veiculo = CriarVeiculoPadrao();
 
         //Act
+        veiculo.SetValor(valorEsperado);
         var valorAtual = veiculo.GetValor();
 
         //Assert
         Assert.Equal(valorEsperado, valorAtual);
     }
 
-    [Fact]
-    public void TestarGetESetDeCalcValor()
+    public Veiculo CriarVeiculoPadrao()
     {
-        //Arrange
-        var valorEsperado = 200000;
-        var veiculo = new Veiculo("1", "1", "01/01/2022", 0, "1", valorEsperado);
-
-        //Act
-        var valorAtual = veiculo.CalcValor();
-
-        //Assert
-        Assert.Equal(valorEsperado, valorAtual);
+        return new Veiculo("Teste", "Teste", "01/01/2022", 0, "Vermelho", 5000);
     }
 
 }

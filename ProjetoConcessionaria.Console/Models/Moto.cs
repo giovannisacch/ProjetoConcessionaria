@@ -42,7 +42,7 @@ namespace ProjetoConcessionaria.Models
 
         public override bool ValidarValor(double valor)
         {
-            if(valor > 2000)
+            if(valor >= 2000)
                 return true;
             throw new ErroDeValidacaoException("Valor de moto tem que ser maior que 2000!");
         }
