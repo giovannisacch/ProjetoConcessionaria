@@ -1,4 +1,4 @@
-using ProjetoConcessionaria.Models;
+using ProjetoConcessionaria.Lib.Models;
 
 namespace ProjetoConcessionaria.API.DTOs
 {

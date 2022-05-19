@@ -1,5 +1,8 @@
+using System;
+using ProjetoConcessionaria.Lib.Exceptions;
+using ProjetoConcessionaria.Lib.Models;
 using Xunit;
-namespace ProjetoConcessionaria.Models;
+namespace ProjetoConcessionaria.TesteUnitario;
 
 public class MotoTest
 {
@@ -42,15 +45,27 @@ public class MotoTest
         var veiculo = CriarMotoPadrao();
 
         //Act
-        var valorAtual = veiculo.CalcValor();
+        var valorAtual = veiculo.CalcValor(veiculo.GetValor());
 
         //Assert
         Assert.Equal(valorEsperado, valorAtual);
     }
 
+    [Fact]
+    public void CarroNaoPodeTerValorMenorQue2000()
+    {
+        //Arrange
+        var valorEsperado = 1000;
+        var veiculo = CriarMotoPadrao();
+
+        //Act e Assert
+        var exception = Assert.Throws<ErroDeValidacaoException>(() => veiculo.SetValor(valorEsperado));
+        Assert.Equal("Valor de moto tem que ser maior que 2000!", exception.Message);
+    }
+
     public Moto CriarMotoPadrao()
     {
-        return new Moto("Teste", "Teste", "01/01/2022", 0, "Vermelho", 2000, 600, "Eletronica");
+        return new Moto("Teste", "Teste", DateTime.Now.ToString("dd/MM/yyyy"), 0, "Vermelho", 2000, 600, "Eletronica");
     }
 
 }

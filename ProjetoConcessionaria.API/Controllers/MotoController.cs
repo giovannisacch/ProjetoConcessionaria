@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using ProjetoConcessionaria.Models;
-using ProjetoConcessionaria.Console.Exception;
+using ProjetoConcessionaria.Lib.Models;
+using ProjetoConcessionaria.Lib.Exceptions;
 using ProjetoConcessionaria.API.DTOs;
 
 

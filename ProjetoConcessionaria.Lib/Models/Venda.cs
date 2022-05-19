@@ -1,4 +1,4 @@
-namespace ProjetoConcessionaria.Models
+namespace ProjetoConcessionaria.Lib.Models
 {
     public class Venda
     {

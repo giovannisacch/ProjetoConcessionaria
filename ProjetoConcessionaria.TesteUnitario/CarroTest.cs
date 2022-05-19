@@ -1,5 +1,8 @@
+using System;
+using ProjetoConcessionaria.Lib.Exceptions;
+using ProjetoConcessionaria.Lib.Models;
 using Xunit;
-namespace ProjetoConcessionaria.Models;
+namespace ProjetoConcessionaria.TesteUnitario;
 
 public class CarroTest
 {
@@ -48,9 +51,21 @@ public class CarroTest
         Assert.Equal(valorEsperado, valorAtual);
     }
 
+    [Fact]
+    public void CarroNaoPodeTerValorMenorQue5000()
+    {
+        //Arrange
+        var valorEsperado = 4000;
+        var veiculo = CriarCarroPadrao();
+
+        //Act e Assert
+        var exception = Assert.Throws<ErroDeValidacaoException>(() => veiculo.SetValor(valorEsperado));
+        Assert.Equal("Valor de carro tem que ser maior que 5000!", exception.Message);
+    }
+
     public Carro CriarCarroPadrao()
     {
-        return new Carro("Teste", "Teste", "01/01/2022", 0, "Vermelho", 5000, true, "Gasolina");
+        return new Carro("Teste", "Teste", DateTime.Now.ToString("dd/MM/yyyy"), 0, "Vermelho", 5000, true, "Gasolina");
     }
 
 }

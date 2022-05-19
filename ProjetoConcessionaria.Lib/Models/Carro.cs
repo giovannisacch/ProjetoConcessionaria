@@ -1,6 +1,6 @@
-using ProjetoConcessionaria.Console.Exception;
+using ProjetoConcessionaria.Lib.Exceptions;
 
-namespace ProjetoConcessionaria.Models
+namespace ProjetoConcessionaria.Lib.Models
 {
     public class Carro : Veiculo
     {
@@ -41,7 +41,7 @@ namespace ProjetoConcessionaria.Models
 
         public override bool ValidarValor(double valor)
         {
-            if(valor >= 5000)
+            if (valor >= 5000)
                 return true;
             throw new ErroDeValidacaoException("Valor de carro tem que ser maior que 5000!");
         }

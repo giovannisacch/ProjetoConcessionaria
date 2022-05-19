@@ -1,6 +1,6 @@
-using ProjetoConcessionaria.Console.Exception;
+using ProjetoConcessionaria.Lib.Exceptions;
 
-namespace ProjetoConcessionaria.Models
+namespace ProjetoConcessionaria.Lib.Models
 {
     public class Cliente : Pessoa
     {
@@ -33,13 +33,15 @@ namespace ProjetoConcessionaria.Models
             return Telefone;
         }
 
-        public bool ValidarTelefone(string telefone){
-            if (telefone.Length > 8 && telefone.Length < 15)
+        public bool ValidarTelefone(string telefone)
+        {
+            if (telefone.Length >= 8 && telefone.Length < 15)
                 return true;
             throw new ErroDeValidacaoException("Telefone tem que ter entre 8 e 15 dígitos!");
         }
 
-        public bool ValidarEmail(string email){
+        public bool ValidarEmail(string email)
+        {
             if (email.Contains("@"))
                 return true;
             throw new ErroDeValidacaoException("Digite um e-mail válido!");

@@ -1,5 +1,6 @@
+using ProjetoConcessionaria.Lib.Models;
 using Xunit;
-namespace ProjetoConcessionaria.Models;
+namespace ProjetoConcessionaria.TesteUnitario;
 
 public class FuncionarioTest
 {

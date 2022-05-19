@@ -1,6 +1,6 @@
-using ProjetoConcessionaria.Console.Exception;
+using ProjetoConcessionaria.Lib.Exceptions;
 
-namespace ProjetoConcessionaria.Models
+namespace ProjetoConcessionaria.Lib.Models
 {
     public class Moto : Veiculo
     {
@@ -30,9 +30,9 @@ namespace ProjetoConcessionaria.Models
         {
             return Partida;
         }
-        public virtual double CalcValor()
+        public virtual double CalcValor(double valor)
         {
-            var valor = Valor + (Cilindrada * 50);
+            valor = Valor + (Cilindrada * 50);
             if (Partida == "Eletronica")
             {
                 return Valor = valor * 1.1;
@@ -42,9 +42,10 @@ namespace ProjetoConcessionaria.Models
 
         public override bool ValidarValor(double valor)
         {
-            if(valor >= 2000)
+            if (valor >= 2000)
                 return true;
             throw new ErroDeValidacaoException("Valor de moto tem que ser maior que 2000!");
         }
+
     }
 }

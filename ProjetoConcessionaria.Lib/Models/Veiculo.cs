@@ -1,6 +1,6 @@
-using ProjetoConcessionaria.Console.Exception;
+using ProjetoConcessionaria.Lib.Exceptions;
 
-namespace ProjetoConcessionaria.Models
+namespace ProjetoConcessionaria.Lib.Models
 {
     public class Veiculo
     {

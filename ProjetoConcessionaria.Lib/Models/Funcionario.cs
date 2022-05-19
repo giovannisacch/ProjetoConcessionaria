@@ -1,4 +1,4 @@
-namespace ProjetoConcessionaria.Models
+namespace ProjetoConcessionaria.Lib.Models
 {
     public class Funcionario : Pessoa
     {
@@ -18,5 +18,6 @@ namespace ProjetoConcessionaria.Models
         {
             return Cargo;
         }
+
     }
 }
