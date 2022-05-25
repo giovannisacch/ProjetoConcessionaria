@@ -11,18 +11,25 @@ namespace ProjetoConcessionaria.API.Controllers;
 public class CarroController : ControllerBase
 {
     public static List<CarroDto> CarrosDaClasse { get; set; } = new List<CarroDto>();
+    public ILogger<CarroController> Log {get;set;}
+    public CarroController(ILogger<CarroController> log){
+        Log = log;
+    }
 
     [HttpPost("SetCarro")]
     public IActionResult SetCarro(CarroDto carroDto)
     {
         try
         {
-            var carro = new Carro(carroDto.Marca, carroDto.Modelo, carroDto.Ano.ToString("yyyy"), carroDto.Quilometragem, carroDto.Cor, carroDto.Valor, carroDto.TransmissaoAutomatica, carroDto.Combustivel);
+            Log.LogInformation("SetCarro");    
+            Log.LogWarning("SetCarro");    
+            var carro = new Carro(carroDto.Marca, carroDto.Modelo, carroDto.Ano.ToString(), carroDto.Quilometragem, carroDto.Cor, carroDto.Valor, carroDto.TransmissaoAutomatica, carroDto.Combustivel);
             CarrosDaClasse.Add(carroDto);
             return Ok(CarrosDaClasse);
         }
         catch (ErroDeValidacaoException ex)
         {
+            Log.LogError(ex.Message);
             return BadRequest(ex.Message);
         }
     }

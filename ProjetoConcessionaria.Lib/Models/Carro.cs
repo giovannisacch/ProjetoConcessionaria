@@ -43,6 +43,7 @@ namespace ProjetoConcessionaria.Lib.Models
         {
             if (valor >= 5000)
                 return true;
+            
             throw new ErroDeValidacaoException("Valor de carro tem que ser maior que 5000!");
         }
 
